@@ -17,7 +17,6 @@ public class KafkaProducerService {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void processNumber(Integer number) {
-        System.out.println(number + " messages to send.");
 
         List<String> contentList = generateContent(number);
 
@@ -26,13 +25,9 @@ public class KafkaProducerService {
             .toList();
 
         CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
-
-        System.out.println("All messages processed.");
     }
 
     public void toMSK(String payload) {
-        System.out.println("Send to topic message: " + payload);
-
         kafkaTemplate.send(getTopicName(), payload);
     }
 

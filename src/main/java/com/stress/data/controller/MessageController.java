@@ -23,32 +23,29 @@ public class MessageController {
 
     @PostMapping("/send/{total}")
     public String sendMessage(@PathVariable int total) {
-        logStartTime();
+        String start = getCurrentTime();
 
         kafkaProducerService.processNumber(total);
 
-        logEndTime();
+        String end = getCurrentTime();
 
-        return "Done";
+        return logTime(total, start, end);
     }
+
 
     @PostMapping("/sendBuffered/{total}")
     public String sendBufferedMessage(@PathVariable int total) {
-        logStartTime();
+        String start = getCurrentTime();
 
         kafkaProducerBufferedService.processBufferedNumber(total);
 
-        logEndTime();
+        String end = getCurrentTime();
 
-        return "Done";
+        return logTime(total, start, end);
     }
 
-    private void logStartTime() {
-        System.out.println("Start time: " + getCurrentTime());
-    }
-
-    private void logEndTime() {
-        System.out.println("End time: " + getCurrentTime());
+    private String logTime(Integer totalMessages, String start, String end) {
+        return "totalMessages: " + totalMessages + "\nstart time: " + start + "\nend time: " + end + "\n";
     }
 
     private String getCurrentTime() {

@@ -21,8 +21,6 @@ public class KafkaProducerBufferedService {
     private final Object lock = new Object();
 
     public void processBufferedNumber(Integer number) {
-        System.out.println(number + " messages to send.");
-
         List<String> contentList = generateContent(number);
 
         List<CompletableFuture<Void>> futures = contentList.stream()
@@ -30,8 +28,6 @@ public class KafkaProducerBufferedService {
                 .toList();
 
         CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
-
-        System.out.println("All messages processed.");
     }
 
     private void addMessageToBuffer(String message) {
@@ -41,8 +37,6 @@ public class KafkaProducerBufferedService {
                 List<String> messagesToSend = new ArrayList<>(messageBuffer);
                 messageBuffer.clear();
                 sendMessages(messagesToSend);
-            }else {
-                System.out.println("Message in cache. BUFFER: " + messageBuffer.size() + " / " + BUFFER_SIZE);
             }
         }
     }

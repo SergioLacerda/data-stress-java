@@ -34,4 +34,8 @@ try with strings:
 
 ```bash
 curl -X POST http://localhost:8080/api/send/10000
+
+--OR
+curl -X POST http://localhost:8080/api/sendBuffered/10000
+
 ```

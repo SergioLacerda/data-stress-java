@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: stressData
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+logging:
+  level:
+    root: info
+    org.apache.kafka: debug
+    org.springframework.kafka: debug

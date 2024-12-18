@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 public class MessageUtils {
 
     public static List<String> generateContent(Integer number) {
-        // Generate content based on number
         return IntStream.range(1, number + 1)
                 .mapToObj(i -> toJSON())
                 .collect(Collectors.toList());

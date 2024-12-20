@@ -32,12 +32,22 @@ public class MessageController {
         return logTime(total, start, end);
     }
 
-
     @PostMapping("/sendBuffered/{total}")
     public String sendBufferedMessage(@PathVariable int total) {
         String start = getCurrentTime();
 
         kafkaProducerBufferedService.processBufferedNumber(total);
+
+        String end = getCurrentTime();
+
+        return logTime(total, start, end);
+    }
+
+    @PostMapping("/sendRandom/{total}")
+    public String sendRandom(@PathVariable int total) {
+        String start = getCurrentTime();
+
+        kafkaProducerService.processRandomizedNumber(total);
 
         String end = getCurrentTime();
 

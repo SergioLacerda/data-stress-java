@@ -26,6 +26,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation("org.springframework.kafka:spring-kafka")
+	implementation 'software.amazon.msk:aws-msk-iam-auth:2.2.0'
+
+	implementation ('com.github.javafaker:javafaker:1.0.2') { exclude module: 'org.yaml' }
+	implementation group: 'org.yaml', name: 'snakeyaml', version: '1.26'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

@@ -1,6 +1,7 @@
 package com.stress.data.service;
 
-import com.github.javafaker.Faker;
+
+import net.datafaker.Faker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

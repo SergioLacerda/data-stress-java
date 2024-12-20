@@ -2,9 +2,10 @@ package com.stress.data.service;
 
 import com.github.javafaker.Faker;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class MessageUtils {
@@ -14,7 +15,7 @@ public class MessageUtils {
     }
 
     public static List<String> generateRandomContent(Integer number) {
-        return IntStream.range(1, number + 1).mapToObj(i -> toRandomJSON()).toList()
+        return IntStream.range(1, number + 1).mapToObj(i -> toRandomJSON()).toList();
     }
 
     private static String toJSON() {
@@ -35,7 +36,8 @@ public class MessageUtils {
         String dataCobranca = dateFormat.format(calendar.getTime());
 
         return String.format(
-            "{\"id_transacao\": \"%s\", \"status\" : \"cobrar\", \"data_cobranca\": \"%s\", \"tenant\": \"tenantA\", \"produto\": \"prod1\", \"servico\": \"serv1\", \"codigo_cliente\": \"%s\", \"codigo_conta\": \"conta1\", \"valor_transacao\": %.2f}",
-            idTransacao, dataCobranca, codigoCliente, valorTransacao
+                "{\"id_transacao\": \"%s\", \"status\" : \"cobrar\", \"data_cobranca\": \"%s\", \"tenant\": \"tenantA\", \"produto\": \"prod1\", \"servico\": \"serv1\", \"codigo_cliente\": \"%s\", \"codigo_conta\": \"conta1\", \"valor_transacao\": %.2f}",
+                idTransacao, dataCobranca, codigoCliente, valorTransacao
         );
+    }
 }

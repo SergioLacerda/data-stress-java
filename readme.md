@@ -38,4 +38,13 @@ curl -X POST http://localhost:8080/api/send/10000
 --OR
 curl -X POST http://localhost:8080/api/sendBuffered/10000
 
+--OR
+curl -X POST http://localhost:8080/api/sendRandom/10000
+```
+
+### 4. Shell script tips
+Repeat calls on n1 means seconds to call again, in this example will call each second
+
+```bash
+watch -n1 | curl -X POST http://localhost:8080/api/send/2000
 ```
